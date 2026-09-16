@@ -1,0 +1,182 @@
+/* ============================================================
+   NUB — global design system
+   "Neon night" party identity. Poppins throughout, mobile-first.
+   Dark screen, confetti palette, glow depth.
+   ============================================================ */
+
+:root {
+  /* --- Confetti palette --- */
+  --pink-500: #ff2d87; /* primary action */
+  --pink-400: #ff5ba1;
+  --pink-300: #ff8ebd;
+  --violet-500: #7c5cff; /* brand secondary */
+  --violet-400: #9a82ff;
+  --violet-300: #b9a8ff;
+  --lime-400: #c6ff3d; /* acid highlight */
+  --sun-400: #ffd23f; /* warm highlight */
+  --cyan-400: #22e3c6; /* success */
+  --tangerine: #ff8a3d;
+
+  /* --- Night ground & surfaces --- */
+  --night-000: #07031a; /* deepest, stage backdrop */
+  --night-100: #0e0729; /* stage */
+  --surface: #170c36; /* device screen */
+  --surface-raised: #1f1247; /* cards */
+  --surface-sunk: #1b0f40; /* inputs */
+  --surface-hi: #2a1a5c; /* hover */
+
+  /* --- Ink on night --- */
+  --ink-000: #ffffff; /* headings */
+  --ink-100: #e6def8; /* strong body */
+  --ink-300: #c0b2e4; /* body */
+  --ink-500: #9083c0; /* muted */
+  --ink-700: #6d5f9c; /* placeholder */
+
+  --line: rgba(255, 255, 255, 0.1);
+  --line-strong: rgba(255, 255, 255, 0.2);
+
+  --danger-500: #ff5f6d;
+  --danger-bg: rgba(255, 95, 109, 0.14);
+  --success-bg: rgba(34, 227, 198, 0.14);
+
+  /* --- Glow depth: offset + blur, tinted by the light source --- */
+  --shadow-sm: 0 2px 4px rgba(4, 1, 14, 0.5),
+    0 4px 12px rgba(124, 92, 255, 0.12);
+  --shadow-md: 0 6px 14px rgba(4, 1, 14, 0.55),
+    0 10px 30px rgba(124, 92, 255, 0.18);
+  --shadow-lg: 0 28px 70px -18px rgba(3, 0, 12, 0.9),
+    0 10px 30px -10px rgba(124, 92, 255, 0.4);
+  --glow-pink: 0 10px 28px -8px rgba(255, 45, 135, 0.72),
+    0 2px 6px rgba(4, 1, 14, 0.5);
+  --glow-violet: 0 10px 28px -8px rgba(124, 92, 255, 0.7),
+    0 2px 6px rgba(4, 1, 14, 0.5);
+
+  /* --- Geometry --- */
+  --r-sm: 10px;
+  --r-md: 14px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+  --r-pill: 999px;
+
+  --font: "Poppins", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+    sans-serif;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  color-scheme: dark;
+  -webkit-text-size-adjust: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  color: var(--ink-300);
+  background: var(--night-100);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--ink-000);
+  margin: 0;
+  letter-spacing: -0.025em;
+  font-weight: 700;
+  line-height: 1.08;
+}
+
+p {
+  margin: 0;
+  line-height: 1.55;
+}
+
+button {
+  font-family: inherit;
+}
+
+a {
+  color: var(--violet-300);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--pink-300);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ---- Themed browser surfaces ---- */
+::selection {
+  background: var(--pink-500);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 3px solid var(--lime-400);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--violet-500) transparent;
+}
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--violet-500);
+  border-radius: 999px;
+  border: 3px solid transparent;
+  background-clip: padding-box;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--pink-500);
+  background-clip: padding-box;
+}
+
+input,
+select,
+textarea {
+  caret-color: var(--lime-400);
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+/* native dropdown popup on dark */
+select option {
+  background: var(--surface-raised);
+  color: var(--ink-100);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
